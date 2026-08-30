@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body.page-gradient-blue {
+    background: linear-gradient(
+        190deg,
+        rgba(0, 0, 0, 1) 10%,
+        rgb(31, 40, 95) 53%,
+        rgb(46, 60, 153) 100%
+    );
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+    color: #ffffff;
+}
+
+/* --- Декоративные элементы (только лилии) --- */
+img[class^="site-"] {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    pointer-events: none; /* Клики проходят сквозь лилии */
+}
+
+.site-lily {
+    bottom: 0;
+    right: 0;
+    width: 35%;
+    height: auto;
+}
+
+.header-area {
+    position: relative;
+    z-index: 1; /* Шапка всегда выше лилий */
+}
+
+/* Вторая лилия: слева под лого */
+.site-lily-2 {
+    top: 95px;      /* Если перекрывает лого — ставь 100px, 110px */
+    left: 30px;     /* Слева, но не за экраном */
+    width: 28%;
+    height: auto;
+    transform: rotate(180deg);
+    transform-origin: center center;
+}
+
+/* --- Шапка, лого, меню, кнопка (все твои стили без изменений) --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 70px;
+    font-weight: 800;
+}
+
+nav {
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #ffffff;
+    padding: 8px 0; 
+}
+
+nav ul li:not(.active):not(.btn) a:hover {
+    border-bottom: 2px solid #9b2d30;
+}
+
+/* Кнопка в меню — твой стиль с анимацией */
+nav ul li.btn a {
+    background: #9b2d30;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 500ms ease;
+    text-decoration: none;
+}
+
+nav ul li.btn a:hover {
+    background: #ff6b70;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img:not([class^="site-"]) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.container {
+    max-width: 2000px;
+    width: 95%;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+/* --- Hero, контакты, цены --- */
+.hero {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-info h2 {
+    color: #9b2d30; 
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-info p {
+    color: #e0e0e0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Кнопка «Записаться» в hero — твой стиль */
+.hero-info .btn {
+    background: #9b2d30; 
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 16px 32px;
+    transition: all 500ms ease;
+    font-size: 18px;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.hero-info .btn:hover {
+    background: #ff6b70;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    object-fit: cover;
+    display: block;
+}
+
+.prices {
+    padding: 40px 0;
+}
+
+.prices h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 24px;
+}
+
+.price-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-content {
+    flex: 1;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+}
+
+.card-content .price {
+    font-weight: 700;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.price-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.hero-contacts h1 {
+    text-align: center;
+    margin-top: 240px;
+    margin-bottom: 30px;
+    font-size: 100px;
+}
+
+.hero-contacts p {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 50px;
+}
+
+/* --- Адаптив --- */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 50px !important;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .hero-info h2 {
+        font-size: 32px !important;
+    }
+
+    .hero img {
+        order: -1; 
+    }
+
+    .price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .price-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-content {
+        text-align: center;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .price-card img {
+        width: 100%;
+        max-width: 200px;
+        height: 200px;
+    }
+
+    .site-lily-2 {
+        display: none;
+    }
+
+    .site-lily {
+        width: 50%;
+    }
+
+    .hero-contacts h1 {
+        font-size: 60px;
+        margin-top: 120px;
+    }
+
+    .hero-contacts p {
+        font-size: 32px;
+    }
+}
+
+body.page-dark-solid {
+    background: 
+        linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)),
+        linear-gradient(
+            190deg,
+            rgba(10, 10, 10, 1) 10%,
+            rgb(102, 23, 23) 50%,
+            rgb(121, 26, 26) 100%
+        );
+}
+
+.hero-contacts {
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-tg {
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* Блок с правилами: ограничиваем ширину, чтобы строки были короткими */
+.hero-rules {
+    max-width: 900px;       /* примерно 6–8 слов в строке при таком шрифте */
+    margin: 0 auto;         /* центрируем сам блок */
+}
+
+.hero-rules p {
+    margin: 0 0 12px 0;    /* отступы между строками */
+    line-height: 1.5;      /* читаемый межстрочный интервал */
+}
